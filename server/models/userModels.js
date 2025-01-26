@@ -11,25 +11,24 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-   firstname:{
+    firstname: {
         type: String,
-        required: true
+        required: false // Allow firstname to be empty if needed
     },
     lastname: {
         type: String,
-        required: true
+        required: false // Allow lastname to be empty if needed
     },
     photo: {
         type: String,
-        required: true
+        required: false // Allow photo to be empty if needed
     },
     creditBalance: {
         type: Number,
         default: 5
     }
-})
+});
 
-const UserModel = mongoose.model('User', userSchema)
+const UserModel = mongoose.model("User", userSchema);
 
-export default UserModel
-
+export default UserModel;

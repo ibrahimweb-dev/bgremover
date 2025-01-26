@@ -16,23 +16,25 @@ const clerkWebhooks = async (req, res) => {
                 case "user.created":{
                     const userData = {
                         clerkId: data.id,
-                        email: data.email_addresses[0].email_address,
-                        firstname: data.first_name,
-                        lastname: data.last_name,
-                        photo: data.image_url
-                    }
+                        email: data.email_addresses?.[0]?.email_address || "",
+                        firstname: data.first_name || "",
+                        lastname: data.last_name || "",
+                        photo: data.image_url || "" // Match the schema field
+                    };
+                    
                     await UserModel.create(userData)
                     res.json({})
 
                     break;
                 }
                 case 'user.updated':{
-                   const userData = {
-                       email: data.email_addresses[0].email_address,
-                       firstname: data.first_name,
-                       lastname: data.last_name,
-                       photo: data.image_url
-                   }
+                    const userData = {
+                        email: data.email_addresses?.[0]?.email_address || "",
+                        firstname: data.first_name || "",
+                        lastname: data.last_name || "",
+                        photo: data.image_url || "" // Match the schema field
+                    };
+                    
                    await UserModel.findOneAndUpdate({clerkId: data.id}, userData)
                    res.json({})
 
