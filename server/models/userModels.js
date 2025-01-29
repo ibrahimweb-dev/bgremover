@@ -13,15 +13,15 @@ const userSchema = new mongoose.Schema({
     },
     firstname: {
         type: String,
-        required: false // Allow firstname to be empty if needed
+    
     },
     lastname: {
         type: String,
-        required: false // Allow lastname to be empty if needed
+      
     },
     photo: {
         type: String,
-        required: false // Allow photo to be empty if needed
+       required: true
     },
     creditBalance: {
         type: Number,
