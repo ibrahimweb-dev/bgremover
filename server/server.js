@@ -23,13 +23,15 @@ app.get('/', (req, res) => {
 
 
 app.post('/api/webhooks', async (req, res) => {
+    const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET);
+
     try {
-        const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET)
-        await whook.verify(JSON.stringify(req.body),{
+        // Ensure that the body is stringified properly
+        await whook.verify(JSON.stringify(req.body), {
             'svix-id': req.headers['svix-id'],
             'svix-timestamp': req.headers['svix-timestamp'],
             'svix-signature': req.headers['svix-signature']
-        })
+        });
 
             const { data, type } = req.body
 
