@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 });
 
 
-app.post('/api/user/webhooks', async (req, res) => {
+app.post('/api/webhooks', async (req, res) => {
     try {
         const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET)
         await whook.verify(JSON.stringify(req.body),{
