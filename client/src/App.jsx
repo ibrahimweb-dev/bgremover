@@ -5,10 +5,11 @@ import { Route, Routes } from 'react-router-dom'
 import BuyCredit from './pages/BuyCredit'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-
+import { Toaster } from 'sonner'
 const App = () => {
   return (
     <div className="min-h-screen bg-slate-100" >
+        <Toaster richColors  position="top-right" />
       <Navbar />
   
       <Routes>

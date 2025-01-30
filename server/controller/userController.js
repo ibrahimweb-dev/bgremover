@@ -65,5 +65,24 @@ const CreateWebhook = async (req, res) => {
         return res.status(500).json({ message: 'Internal server error', error: error.message });
     }
 };
+// api for avalable credit
+const userCredit = async (req, res) => {
+    try {
+        const { clerkId } = req.body;
+        const userData = await UserModel.findOne({ clerkId });
+        res.status(200).json({ creditBalance: userData.creditBalance });
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ message: 'Internal server error', error: error.message });
+        
+    }
+}
 
-export { CreateWebhook };
+
+
+
+
+
+
+
+export { CreateWebhook, userCredit };
